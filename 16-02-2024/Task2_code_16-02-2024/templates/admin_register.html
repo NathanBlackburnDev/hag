@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="../static/css/admin_register.css">
+
+    <!-- Display flashed messages -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+  <div class="title">
+    <h1>Admin Register</h1>
+  </div>
+  
+  <div class="form-container">
+    <form method="POST">
+        <div class="mb-3">
+            <label for="exampleInputUsername1" class="form-label">Username</label>
+            <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="emailHelp" name="username" placeholder="admin">
+            <div id="emailHelp" class="form-text">Username must be between 4 and 14 characters</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="admin@gmail.com">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="●●●●●●●●" name="password">
+          <div id="emailHelp" class="form-text">Password must have 1 capital letter, 1 lowercase letter, 1 number and be minimum 8 characters</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="●●●●●●●●" name="confirm_password">
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+  </div>
+
+{% endblock %}

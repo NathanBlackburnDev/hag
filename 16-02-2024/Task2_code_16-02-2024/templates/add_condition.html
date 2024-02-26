@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+<script src="../static/javascript/add_condition.js"></script>
+<link rel="stylesheet" href="../static/css/add_condition.css">
+
+  <!-- Display flashed messages -->
+  {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+<div class="title">
+    <h1>Add condition</h1>
+  </div>
+  
+  <div class="form-container">
+    <form method="POST">
+        <div class="mb-3" style="margin-bottom: 0 !important;">
+            <label for="exampleInputUsername1" class="form-label">Condition name</label>
+            <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="emailHelp" name="condition_name" placeholder="Asthma" {% if admin_data %} value="{{admin_data[0]}}" {% endif %}>
+        </div>
+        <div class="container1">
+            <div class="form-floating">
+                <textarea class="form-control" id="floatingTextarea2" style="height: 100px" name="condition_desc" placeholder="Asthma is a lung condition" {% if admin_data %} value="{{admin_data[1]}}" {% endif %}></textarea>
+                <label for="floatingTextarea2">Condition description</label>
+            </div>
+            <div class="form-floating">
+                <textarea class="form-control" onkeyup="handleInput(event)" rows="10" id="floatingTextarea3" style="height: 100px" name="condition_symptom" placeholder="Condition symptoms" {% if admin_data %} value="{{ admin_data[2] }}" {% endif %}></textarea>
+                <label for="floatingTextarea3">Condition symptoms</label>
+            </div>
+        </div>
+        <div class="container2">
+            <div class="form-floating">
+                <textarea class="form-control" onkeyup="handleInput(event)" rows="10" id="floatingTextarea4" style="height: 100px" name="condition_treatment" placeholder="Condition treatment" {% if admin_data %} value="{{ admin_data[3] }}" {% endif %}></textarea>
+                <label for="floatingTextarea4">Condition treatment</label>
+            </div>
+            <div class="form-floating">
+                <textarea class="form-control" onkeyup="handleInput(event)" rows="10" id="floatingTextarea5" style="height: 100px" name="condition_causes" placeholder="Condition causes" {% if admin_data %} value="{{ admin_data[4] }}" {% endif %}></textarea>
+                <label for="floatingTextarea4">Condition causes</label>
+            </div>
+        </div>
+        <div class="container3">
+            <select class="form-select" aria-label="Default select example" name="weather_type">
+                <option selected required {% if admin_data %} value="{{ admin_data[5] }}" {% endif %}>Weather type</option>
+                <option value="Extreme heat">Extremely hot</option>
+                <option value="Mild heat">Mildly hot</option>
+                <option value="Average temperature">Average temperature</option>
+                <option value="Mild heat">Mildly cold</option>
+                <option value="Mild heat">Extremely cold</option>
+                <option value="N/A">N/A</option>
+            </select>
+            <select class="form-select" aria-label="Default select example" name="condition_type">
+                <option selected required {% if admin_data %} value="{{ admin_data[6] }}" {% endif %}>Condition type</option>
+                <option value="enviromental">Enviromental</option>
+                <option value="air_quality">Air Quality</option>   
+                <option value="N/A">N/A</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Add condition</button>
+    </form>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+/* Position the form */
+.form-container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    top: 2.5rem;
+}
+
+.title {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    top: 2rem;
+}
+
+.form-container form {
+    width: 35%;
+}

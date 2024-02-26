@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}
+    Advice Health Group
+{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="../static/css/index.css">
+
+<div class="main-container">
+    <div class="sub-container">
+        <h1>The Advice You Can Trust</h1>
+        <div class="icons-container">
+            <div class="tracking-container">
+                <a href="{{ url_for('health_tools') }}">
+                    <img src="../static/images/notepad.png" id="notepad" alt="Notepad icon image">
+                </a>
+                <h3>Health Tracking Tool</h3>
+            </div>
+            <div class="risk-container">
+                <a href="{{ url_for('risk_assessment') }}">
+                    <img src="../static/images/houser.png" id="house" alt="House icon image">
+                </a>
+                <h3>Home Risk Assessment</h3>
+            </div>
+        </div>
+        <div class="weather-container">
+            <div class="airquality-container">
+                <a href="{{ url_for('air_quality') }}">
+                    <img src="../static/images/airquality.png" id="airquality" alt="Air quality image">
+                </a>
+                <h3>Air Quality Monitoring</h3>
+            </div>
+            <div class="forecast-container">
+                <a href="{{ url_for('weather_forecast') }}">
+                    <img src="../static/images/forecast.png" id="forecast" alt="Weather forecast image">
+                </a>
+                <h3>Weather Forecast with Health Advice</h3>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

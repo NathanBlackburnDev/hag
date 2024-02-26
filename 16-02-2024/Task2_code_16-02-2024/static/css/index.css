@@ -1,0 +1,76 @@
+body {
+    background-image: url('../images/background.jpeg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+/* Hide any overflowing content */
+.main-container {
+    max-width: 100%;
+    overflow-x: hidden;
+    height: 46rem;
+}
+
+.sub-container {
+    position: relative;
+    right: -10rem;
+    top: 5rem;
+}
+
+#notepad {
+    height: 10rem;
+}
+
+#forecast {
+    position: relative;
+}
+
+#house {
+    height: 10rem;
+}
+
+.icons-container {
+    display: flex;
+    gap: 5rem;
+    position: relative;
+    top: 6rem;
+}
+
+.weather-container {
+    display: flex;
+    gap: 5rem;
+    position: relative;
+    top: 12rem;
+}
+
+/* Center health tracking tool image and text */
+.tracking-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Center risk assessment image and text */
+.risk-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Center weather forecast image and text */
+.forecast-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Center air quality image and text */
+.airquality-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}

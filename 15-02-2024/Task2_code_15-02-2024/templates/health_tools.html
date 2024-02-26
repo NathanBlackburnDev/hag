@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Health Tool{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href="../static/css/health_tools.css">
+
+  <!-- Display flashed messages -->
+  {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+<div class="main-container">
+    <div class="current-health">
+        <h2>Current health</h2>
+        {% if height and weight %}
+            <p>Current height: {{ height[0][0] }}</p>
+            <p>Current weight: {{ weight[0][0] }}</p>
+        {% else %}
+            <p>Enter height, weight, conditions and medications to track!</p>
+        {% endif %}
+        {% if info %}
+            <h4>Conditions</h4>
+            {% for item in info %}
+                <p>{{ item[1] }}</p>
+            {% endfor %}
+            <h4>Medications</h4>
+            {% for item in info %}
+                <p>{{ item[2] }}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div class="notes">
+        <h2>Notes</h2>
+        {% if notes %}
+            {% for note in notes %}
+                <p>{{ note[2] }}: {{ note[3] }}</p>
+            {% endfor %}
+        {% endif %}
+        <a href="{{ url_for('add_notes') }}"><button class="btn btn-primary" >Add notes</button></a>
+    </div>
+    <div class="form-container">
+        <h2>Update health</h2>
+        <form method="POST">
+            <div class="mb-3" style="margin-bottom: 0 !important;">
+                <label for="exampleInputUsername1" class="form-label">Condition (optional)</label>
+                <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="emailHelp" name="condition" placeholder="Asthma">
+            </div>
+            <div class="mb-3" style="margin-bottom: 0 !important;">
+                <label for="exampleInputUsername1" class="form-label">Medication (optional)</label>
+                <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="emailHelp" name="medication" placeholder="Inhaler">
+            </div>
+            <div class="mb-3" style="margin-bottom: 0 !important;">
+                <label for="exampleInputUsername1" class="form-label">Weight (optional)</label>
+                <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="emailHelp" name="weight" placeholder="100 kg">
+            </div>
+            <div class="mb-3" style="margin-bottom: 0 !important;">
+                <label for="exampleInputUsername1" class="form-label">Height (optional)</label>
+                <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="emailHelp" name="height" placeholder="100 cm">
+            </div>
+            <div class="buttons">
+                <button type="submit" class="btn btn-primary">Update information</button>
+            </div>
+        </form>
+        </div>
+    </div>
+{% endblock %}

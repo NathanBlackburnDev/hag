@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Risk Assessment{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href="../static/css/risk_assessment.css">
+
+  <!-- Display flashed messages -->
+  {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  <div class="main-container">
+    <div class="appointments">
+        <h1>Your appointments</h1>
+        {% if existing_appointments %}
+            {% for appointment in existing_appointments %}
+                <h4>Location: {{ appointment[-1] }}</h4>
+                <h4>Time: {{ appointment[-2] }}</h4>
+                <h4>Date: {{ appointment[-3] }}</h4>
+            {% endfor %}
+        {% else %}
+            <h4>You have made no appointments!</h4>
+        {% endif %}
+    </div>
+    <div class="sub-container">
+        <h1>
+            Book a risk assessment
+        </h1>
+        <form method="POST">
+            <div class="mb-3" style="margin-bottom: 0 !important;">
+                <label for="exampleInputUsername1" class="form-label">Your location</label>
+                <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="emailHelp" name="location" placeholder="123 Example Street">
+            </div>
+            <select class="form-select" aria-label="Default select example" name="time">
+                <option selected required>Pick a time</option>
+                <option value="9 AM">9 AM</option>
+                <option value="12 AM">12 AM</option>
+                <option value="2 PM">2 PM</option>
+                <option value="5 PM">5 PM</option>
+                <option value="8 PM">8 PM</option>
+            </select>
+            <label for="date">Pick date:</label>
+            <input type="date" name="date">
+            <button type="submit" class="btn btn-primary">Book assessment</button>
+        </form>
+    </div>
+  </div>
+{% endblock %}

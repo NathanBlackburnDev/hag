@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Weather Forecast{% endblock %}
+{% block content %}
+
+<!-- Weather forecast widget -->
+<script>
+    (function(d, s, id) {
+        if (d.getElementById(id)) {
+            if (window.__TOMORROW__) {
+                window.__TOMORROW__.renderWidget();
+            }
+            return;
+        }
+        const fjs = d.getElementsByTagName(s)[0];
+        const js = d.createElement(s);
+        js.id = id;
+        js.src = "https://www.tomorrow.io/v1/widget/sdk/sdk.bundle.min.js";
+
+        fjs.parentNode.insertBefore(js, fjs);
+    })(document, 'script', 'tomorrow-sdk');
+    </script>
+
+    <div class="tomorrow"
+       data-location-id="050785"
+       data-language="EN"
+       data-unit-system="METRIC"
+       data-skin="dark"
+       data-widget-type="upcoming"
+       style="padding-bottom:22px;position:relative; width: 95%; margin: 0 auto; top: 2rem;"
+    >
+      <a
+        href="https://www.tomorrow.io/weather-api/"
+        rel="nofollow noopener noreferrer"
+        target="_blank"
+        style="position: absolute; bottom: 0; transform: translateX(-50%); left: 50%;"
+      >
+      </a>
+    </div>
+
+<div class="conditions">
+    <div class="conditions-grid">
+        <div class="card card1" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

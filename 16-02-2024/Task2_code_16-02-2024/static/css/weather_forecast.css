@@ -1,0 +1,21 @@
+.conditions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    top: 0.95rem;
+}
+
+.conditions-grid {
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    top: 1rem;
+}
+
+.conditions center {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}

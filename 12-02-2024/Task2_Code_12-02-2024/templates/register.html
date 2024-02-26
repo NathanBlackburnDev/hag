@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block title %}
+Register
+{% endblock %}
+{% block content %}
+<script src="../static/javascript/register.js"></script>
+
+<!-- Display flashed messages -->
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<link rel="stylesheet" href="../static/css/register.css">
+<div class="title">
+  <h1>Create An Account</h1>
+</div>
+<div class="form-container">
+  <form method="POST">
+      <div class="mb-3">
+          <label for="exampleInputUsername1" class="form-label">Username</label>
+          <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="emailHelp" name="username" placeholder="alan_turing">
+          <div id="emailHelp" class="form-text">Username must be between 4 and 14 characters</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="turing@blechleypark.gov.uk">
+      </div>
+      <div class="mb-3">
+          <label for="exampleInputLocation1" class="form-label">Location</label>
+          <input type="text" class="form-control" id="exampleInputLocation1" aria-describedby="emailHelp" name="location" placeholder="Cambridge">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="●●●●●●●●" name="password">
+        <div id="emailHelp" class="form-text">Password must have 1 capital letter, 1 lowercase letter, 1 number and be minimum 8 characters</div>
+      </div>
+      <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="●●●●●●●●" name="confirm_password">
+      </div>
+      <!-- Button trigger model -->
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <label class="form-check-label" for="exampleCheck1">Agree to terms & conditions</label>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Terms & Conditions</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Welcome to our website. If you continue to browse and use this website, you are agreeing to comply with and be bound by the following terms and conditions of use, which together with our privacy policy govern Health Advice Group's relationship with you in relation to this website. If you disagree with any part of these terms and conditions, please do not use our website.
+
+              The term 'Health Advice Group' or 'us' or 'we' refers to the owner of the website whose registered office is 123 Norwich. Our company registration number is 4418 at Norwich. The term 'you' refers to the user or viewer of our website.
+
+              The use of this website is subject to the following terms of use:
+
+              The content of the pages of this website is for your general information and use only. It is subject to change without notice.
+              This website uses cookies to monitor browsing preferences. If you do allow cookies to be used, the following personal information may be stored by us for use by third parties: Email, Location.
+              Neither we nor any third parties provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law.
+              Your use of any information or materials on this website is entirely at your own risk, for which we shall not be liable. It shall be your own responsibility to ensure that any products, services or information available through this website meet your specific requirements.
+              This website contains material which is owned by or licensed to us. This material includes, but is not limited to, the design, layout, look, appearance and graphics. Reproduction is prohibited other than in accordance with the copyright notice, which forms part of these terms and conditions.
+              All trade marks reproduced in this website which are not the property of, or licensed to, the operator are acknowledged on the website.
+              Unauthorised use of this website may give rise to a claim for damages and/or be a criminal offence.
+              From time to time this website may also include links to other websites. These links are provided for your convenience to provide further information. They do not signify that we endorse the website(s). We have no responsibility for the content of the linked website(s).
+              Your use of this website and any dispute arising out of such use of the website is subject to the laws of England, Northern Ireland, Scotland and Wales.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary" id="agreeButton" data-bs-dismiss="modal">Agree</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="/login" style="text-decoration: none;">
+        <p>Already have an account? Login</p>
+      </a>
+      <button type="submit" class="btn btn-primary" id="registerButton" disabled>Register</button>
+  </form>
+</div>
+{% endblock %}

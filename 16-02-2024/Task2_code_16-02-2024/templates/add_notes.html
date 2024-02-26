@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Health Tool{% endblock %}
+{% block content %}
+
+  <!-- Display flashed messages -->
+  {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+<div style="height: 85vh; display: flex; justify-content: center; align-items: center;">
+    <div>
+        <form method="POST">
+            <h1 style="text-align: center;">Add a note</h1>
+            <div class="form-floating">
+              <textarea class="form-control" rows="10" id="floatingTextarea3" style="height: 300px; width: 600px;" name="text"></textarea>
+              <label for="floatingTextarea3">Add note</label>
+            </div>
+            <div class="buttons">
+                <button type="submit" class="btn btn-primary" style="margin-top: 2rem;">Add entry</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

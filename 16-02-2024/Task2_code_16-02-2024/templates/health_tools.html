@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}Health Tool{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href="../static/css/health_tools.css">
+
+  <!-- Display flashed messages -->
+  {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+<div class="main-container">
+    <div class="current-health">
+        <h2>Current health</h2>
+            {% if height %}
+                <p>Height: {{ height[0][0] }}</p>
+            {% else %}
+                <p>No height entered!</p>
+            {% endif %}
+            {% if weight %}
+                <p>Weight: {{ weight[0][0] }}</p>
+            {% else %}
+                <p>No weight entered!</p>
+            {% endif %}
+            <h4>Conditions</h4>
+            {% if conditions %}
+                {% for item in conditions %}
+                    <p>{{ item[1] }} - <a style="text-decoration: none; color: #0d6efd;" href="delete_health/condition/{{item[-1]}}/{{item[1]}}">Delete</a></p>
+                {% endfor %}
+            {% else %}
+                <p>No conditions!</p>
+            {% endif %}
+            <h4>Medications</h4>
+            {% if medications %}
+                {% for item in medications %}
+                    <p>{{ item[2] }} - <a style="text-decoration: none; color: #0d6efd;" href="delete_health/medication/{{item[-1]}}/{{item[2]}}">Delete</a></p>
+                {% endfor %}
+            {% else %}
+                <p>No medications!</p>
+            {% endif %}
+    </div>
+    <div class="notes">
+        <h2>Notes</h2>
+        {% if notes %}
+            {% for note in notes %}
+                <p>{{ note[2] }}: {{ note[3] }}</p>
+            {% endfor %}
+        {% endif %}
+        <a href="{{ url_for('add_notes') }}"><button class="btn btn-primary" >Add notes</button></a>
+    </div>
+    <div class="form-container">
+        <h2>Update health</h2>
+        <form method="POST">
+            <div class="mb-3" style="margin-bottom: 0 !important;">
+                <label for="exampleInputUsername1" class="form-label">Condition (optional)</label>
+                <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="emailHelp" name="condition" placeholder="Asthma">
+            </div>
+            <div class="mb-3" style="margin-bottom: 0 !important;">
+                <label for="exampleInputUsername1" class="form-label">Medication (optional)</label>
+                <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="emailHelp" name="medication" placeholder="Inhaler">
+            </div>
+            <div class="mb-3" style="margin-bottom: 0 !important;">
+                <label for="exampleInputUsername1" class="form-label">Weight (optional)</label>
+                <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="emailHelp" name="weight" placeholder="100 kg">
+            </div>
+            <div class="mb-3" style="margin-bottom: 0 !important;">
+                <label for="exampleInputUsername1" class="form-label">Height (optional)</label>
+                <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="emailHelp" name="height" placeholder="100 cm">
+            </div>
+            <div class="buttons">
+                <button type="submit" class="btn btn-primary">Update information</button>
+            </div>
+        </form>
+        </div>
+    </div>
+{% endblock %}

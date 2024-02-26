@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Weather Forecast{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="../static/css/weather_forecast.css">
+
+<!-- Weather forecast widget -->
+<script>
+    (function(d, s, id) {
+        if (d.getElementById(id)) {
+            if (window.__TOMORROW__) {
+                window.__TOMORROW__.renderWidget();
+            }
+            return;
+        }
+        const fjs = d.getElementsByTagName(s)[0];
+        const js = d.createElement(s);
+        js.id = id;
+        js.src = "https://www.tomorrow.io/v1/widget/sdk/sdk.bundle.min.js";
+
+        fjs.parentNode.insertBefore(js, fjs);
+    })(document, 'script', 'tomorrow-sdk');
+    </script>
+
+    <div class="tomorrow"
+       data-location-id="050785"
+       data-language="EN"
+       data-unit-system="METRIC"
+       data-skin="dark"
+       data-widget-type="upcoming"
+       style="padding-bottom:22px;position:relative; width: 95%; margin: 0 auto; top: 2rem;"
+    >
+      <a
+        href="https://www.tomorrow.io/weather-api/"
+        rel="nofollow noopener noreferrer"
+        target="_blank"
+        style="position: absolute; bottom: 0; transform: translateX(-50%); left: 50%;"
+      >
+      </a>
+    </div>
+
+<div class="conditions">
+    <h1 style="z-index: 5000; background-color: white;">Weather and enviromental conditions</h1>
+    <div class="conditions-grid">
+        {% for condition in conditions %}
+            <div class="card card1" style="width: 20rem;">
+                <div class="card-body">
+                <h5 class="card-title">{{ condition[1] }}</h5>
+                <p class="card-text">{{ condition[2] }}</p>
+                <a href="/moreinfo/{{condition[1]}}" class="btn btn-primary">More information</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% if query_len <= cards %}
+        <center><a href="/loadmore/{{cards}}">
+            <button type="button" class="btn btn-primary">Load more</button>
+        </a></center>
+    {% endif %}
+</div>
+{% endblock %}

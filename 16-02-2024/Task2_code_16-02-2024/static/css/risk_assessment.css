@@ -1,0 +1,25 @@
+.main-container {
+    height: 85vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.sub-container {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sub-container form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.appointments {
+    height: 60vh;
+    overflow-y: auto;
+}
