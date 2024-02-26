@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}About{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href="../static/css/more_info.css">
+
+<div class="main-container">
+    <div class="sub-container">
+        {% for condition in conditions %}
+            <h1>{{ condition[1] }}</h1>
+            <div class="desc">
+                <p>{{ condition[2] }}</p>
+            </div>
+            <div class="treatment">
+                <h3>Treatment</h3>
+                {% set treatment = treatment.split('\n') %}
+                {% for point in treatment %}
+                    {{ point }}<br>
+                {% endfor %}
+            </div>
+            <div class="symptoms">
+                <h3>Symptoms</h3> 
+                {% set symptoms = symptoms.split('\n') %}
+                {% for point in symptoms %}
+                    {{ point }}<br>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

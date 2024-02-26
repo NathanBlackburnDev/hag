@@ -1,0 +1,17 @@
+.form-container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    top: 10rem;
+}
+
+.title {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    top: 5rem;
+}
+
+.form-container form {
+    width: 35%;
+}

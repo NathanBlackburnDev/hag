@@ -1,0 +1,18 @@
+/* Adjust main container */
+.main-container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    top: 5rem;
+}
+
+/* Adjust titile */
+.text-container h1 {
+    text-align: center;
+    position: relative;
+    top: -3rem;
+}
+
+.text-container {
+    width: 80%;
+}
